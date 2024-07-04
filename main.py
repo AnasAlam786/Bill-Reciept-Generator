@@ -3,12 +3,13 @@ from CreatePDF import Reciept, FillCSV
 from datetime import datetime
 import pandas as pd
 import base64
+from pytz import timezone
 
 #st.title("Reciept Generation")
 AC = st.text_input("Account Number")
 name = st.text_input("Name")
 amount = st.text_input("Amount")
-time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
 
 check=st.checkbox("Is There Any Due Payment?")
 if check:
