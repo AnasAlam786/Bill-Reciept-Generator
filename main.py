@@ -6,7 +6,7 @@ import base64
 from pytz import timezone
 
 #st.title("Reciept Generation")
-AC = st.text_input("Account Number")
+AC = str(st.text_input("Account Number"))
 name = st.text_input("Name")
 amount = st.text_input("Amount")
 time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
@@ -39,7 +39,5 @@ if st.button("Submit"):
     st.error(f"Reciept Not Generated! Error = {e}",icon="🚨")
 
 df = pd.read_csv('data.csv')
+df['Account Number'] = df['Account Number'].astype(str)
 st.dataframe(df, use_container_width=True)
-
-
-
