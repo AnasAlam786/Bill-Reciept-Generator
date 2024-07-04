@@ -38,7 +38,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Saseed Sankhya last 3digit ramdom
   page.insert_text((237, 120), 
-                   str(randint(100, 999)),                          fontsize=10, 
+                   str(randint(100, 999)), fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
@@ -87,15 +87,3 @@ def FillCSV(AC, name, amount,payed,due,time,file):
 
   df = df._append(data, ignore_index=True)
   df.to_csv('data.csv', index=False)
-
-def ShowData(file):
-  st.dataframe(fle, use_container_width=True)
-
-"""with col2:
-                   #if st.button("Reset Text"):
-                     st.markdown('''
-
-                             <div class="pdf-container">
-                         <iframe src="https://online.publuu.com/572124/1284480" width="650" height=900></iframe>
-                     </div>
-                             ''' ,unsafe_allow_html=True)"""
