@@ -62,23 +62,3 @@ This is a Streamlit-based application that generates receipts in PDF format and 
 - pytz
 
 Make sure to include `CreatePDF.py` in the same directory as `app.py`. The `CreatePDF.py` file should contain the implementation for `Reciept` and `FillCSV` functions used in the app.
-
-## Example
-
-Here is an example of the app in use:
-
-1. Input the details:
-
-    ![Input](screenshots/input.png)
-
-2. Generate the receipt:
-
-    ![Receipt](screenshots/receipt.png)
-
-3. View the transaction log:
-
-    ![Log](screenshots/log.png)
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
