@@ -38,6 +38,10 @@ if st.button("Submit"):
   except Exception as e:
     st.error(f"Reciept Not Generated! Error = {e}",icon="🚨")
 
-df = pd.read_csv('data.csv')
-df['Account Number'] = df['Account Number'].astype(str)
-st.dataframe(df, use_container_width=True)
+try:
+  df = getData()
+  df['Account Number'] = df['Account Number'].astype(str)
+  st.dataframe(df, use_container_width=True)
+  
+except Exception as e:
+  st.error(f"Problem With Data File! Error = {e}",icon="🚨")
