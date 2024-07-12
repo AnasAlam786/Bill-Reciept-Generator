@@ -32,7 +32,7 @@ if st.button("Submit"):
 
     # Display the PDF in Streamlit
     st.markdown(pdf_display, unsafe_allow_html=True)
-    FillCSV(AC, name, amount,payed,due, str(time),"data.csv")
+    FillCSV(AC, name, amount,payed,due, str(time))
     #st.success("Reciept Generated")
 
   except Exception as e:
