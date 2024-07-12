@@ -23,6 +23,7 @@ elif check==False:
 if st.button("Submit"):
   try:
     due=str(int(amount)-int(payed))
+    FillCSV(AC, name, amount,payed,due, str(time))
     Reciept(AC, name, amount,payed,due, str(time))
 
     with open("receipt1.pdf", "rb") as pdf_file:
@@ -32,7 +33,7 @@ if st.button("Submit"):
 
     # Display the PDF in Streamlit
     st.markdown(pdf_display, unsafe_allow_html=True)
-    FillCSV(AC, name, amount,payed,due, str(time))
+    
     #st.success("Reciept Generated")
 
   except Exception as e:
