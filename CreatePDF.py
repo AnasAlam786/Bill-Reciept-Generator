@@ -1,10 +1,15 @@
 import fitz
-
+import gspread
+from google.oauth2.service_account import Credentials
 from random import randint
 from num2words import num2words
 import pandas as pd
 
-
+scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
+client = gspread.authorize(creds)
+sheet_id = "1i44CXmnsL5WApTnS9QRhM4ZVOU9OngeFL9yJ-GIHY14"
+sheet = client.open_by_key(sheet_id).sheet1
 
 def Reciept(AC, name, amount,payed,due,time):
     
@@ -38,7 +43,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Saseed Sankhya last 3digit ramdom
   page.insert_text((237, 120), 
-                   str(randint(100, 999)), fontsize=10, 
+                   str(randint(100, 999)),                          fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
@@ -76,14 +81,12 @@ def Reciept(AC, name, amount,payed,due,time):
   pdf_document.close()
 
 
-def FillCSV(AC, name, amount,payed,due,time,file):
-  df = pd.read_csv(file)
-  data={"Name":name,
-     "Amount":amount,
-     "Payed Amount":payed,
-     "Due Amount":due,
-     "Account Number":AC,
-     "Time":time}
+def FillCSV(AC, name, amount,payed,due,time):
+  sheet.append_row( [name,amount, payed, due, AC, time])
 
-  df = df._append(data, ignore_index=True)
-  df.to_csv('data.csv', index=False)
+def getData():
+  data = sheet.get_all_records()
+
+  return pd.DataFrame(data)
+                 
+
