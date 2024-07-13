@@ -16,68 +16,73 @@ def Reciept(AC, name, amount,payed,due,time):
   
   amount_word=f"({num2words(amount).title()} Only)"
   due_word=f"({num2words(due).title()} Only)"
-    
+                 
   pdf_document = fitz.open("receipt.pdf")
   page = pdf_document[0]
 
   # Account Number
-  page.insert_text((192, 159),
+  page.insert_text((209, 180),
                    AC, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
-  #Name
-  page.insert_text((445, 158), 
-                    name, fontsize=11, 
-                    fontname = "Times-Bold",
-                    color=(0, 0, 0))
-  #Date and Time
-  page.insert_text((445, 140), 
-                    time, fontsize=10, 
-                    fontname = "Times-Bold",
-                    color=(0, 0, 0))
                  
   #Amount
-  page.insert_text((198, 177),
+  page.insert_text((215, 195),
                    amount, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
-  #Saseed Sankhya last 3digit ramdom
-  page.insert_text((237, 120), 
-                   str(randint(100, 999)),                          fontsize=10, 
-                   fontname = "Times-Bold",
-                   color=(0, 0, 0))
-
-  #Amount Due
-  page.insert_text((198,235), 
-                   due_word, fontsize=10, 
-                   fontname = "Times-Bold",
-                   color=(0, 0, 0))
-
   #Amount Payed
-  page.insert_text((198,190),        
+  page.insert_text((215,212),        
                    payed, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
+  #Amount Due
+  page.insert_text((209,244.5), 
+                   due_word, fontsize=10, 
+                   fontname = "Times-Bold",
+                   color=(0, 0, 0))
+
   #Amount in words
-  page.insert_text((192, 216), 
+  page.insert_text((209, 228), 
                    amount_word, fontsize=10, 
+                   fontname = "Times-Bold",
+                   color=(0, 0, 0))
+                 
+  #Saseed Sankhya last 3digit ramdom
+  page.insert_text((254, 146), 
+                   str(randint(100, 999)), fontsize=10, 
+                   fontname = "Times-Bold",
+                   color=(0, 0, 0))
+
+
+  #Name
+  page.insert_text((430, 179), 
+                   name, fontsize=11, 
+                   fontname = "Times-Bold",
+                   color=(0, 0, 0))
+  #Date and Time
+  page.insert_text((430, 163), 
+                   time, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
   #Date and Time
-  page.insert_text((445, 251), 
+  page.insert_text((430, 277), 
                    time, fontsize=10,
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
+                 
   #Sandarbh sankhya
-  page.insert_text((445, 121), 
+  page.insert_text((430, 146), 
                    str(randint(10000, 99999)), fontsize=10,
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
-    # Save the updated PDF to a new file
+
+
+  # Save the updated PDF to a new file
   pdf_document.save("receipt1.pdf")
   pdf_document.close()
 
