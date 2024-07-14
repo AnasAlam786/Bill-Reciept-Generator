@@ -14,8 +14,7 @@ sheet = client.open_by_key(sheet_id).sheet1
 def Reciept(AC, name, amount,payed,due,time):
     
   
-  amount_word=f"({num2words(amount).title()} Only)"
-  payed_word=f"({num2words(payed).title()} Only)"
+  amount_word=f"₹({num2words(amount).title()} Only)"
             
   pdf_document = fitz.open("receipt.pdf")
   page = pdf_document[0]
@@ -34,7 +33,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Amount Payed
   page.insert_text((215,212),        
-                   payed_word, fontsize=10, 
+                   payed, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
