@@ -14,7 +14,7 @@ sheet = client.open_by_key(sheet_id).sheet1
 def Reciept(AC, name, amount,payed,due,time):
     
   
-  amount_word=f"₹({num2words(amount).title()} Only)"
+  amount_word=f"({num2words(amount).title()} Only)"
             
   pdf_document = fitz.open("receipt.pdf")
   page = pdf_document[0]
