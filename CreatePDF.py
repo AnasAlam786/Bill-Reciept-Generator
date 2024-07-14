@@ -15,8 +15,8 @@ def Reciept(AC, name, amount,payed,due,time):
     
   
   amount_word=f"({num2words(amount).title()} Only)"
-  due_word=f"({num2words(due).title()} Only)"
-                 
+  payed_word=f"({num2words(payed).title()} Only)"
+            
   pdf_document = fitz.open("receipt.pdf")
   page = pdf_document[0]
 
@@ -34,13 +34,13 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Amount Payed
   page.insert_text((215,212),        
-                   payed, fontsize=10, 
+                   payed_word, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
   #Amount Due
   page.insert_text((209,244.5), 
-                   due_word, fontsize=10, 
+                   due, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
