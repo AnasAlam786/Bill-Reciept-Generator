@@ -1,5 +1,5 @@
 import streamlit as st
-from CreatePDF import Reciept, FillCSV, getData
+from CreatePDF import Reciept, FillCSV,getData
 from datetime import datetime
 import pandas as pd
 import base64
@@ -16,21 +16,20 @@ if payed=="":
   payed=amount
 
 
-#st.markdown(html_string, unsafe_allow_html=True)
-
 if st.button("Submit"):
   try:
     due=str(int(amount)-int(payed))
-    FillCSV(AC, name, amount,payed,due, str(time))
     Reciept(AC, name, amount,payed,due, str(time))
 
-    with open("receipt1.pdf", "rb") as pdf_file:
+    with open("reciept1.pdf", "rb") as pdf_file:
       encoded_pdf = base64.b64encode(pdf_file.read()).decode('utf-8')
 
     pdf_display = f'<iframe src="data:application/pdf;base64,{encoded_pdf}" width="710" height="480" type="application/pdf"></iframe>'
 
     # Display the PDF in Streamlit
     st.markdown(pdf_display, unsafe_allow_html=True)
+    FillCSV(AC, name, amount,payed,due, str(time))
+
     
     #st.success("Reciept Generated")
 
@@ -39,6 +38,7 @@ if st.button("Submit"):
 
 try:
   df = getData()
+  df = df.iloc[::-1].reset_index(drop=True)
   df['Account Number'] = df['Account Number'].astype(str)
   st.dataframe(df, use_container_width=True)
   
