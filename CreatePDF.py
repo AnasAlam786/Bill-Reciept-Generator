@@ -12,11 +12,11 @@ sheet_id = "1i44CXmnsL5WApTnS9QRhM4ZVOU9OngeFL9yJ-GIHY14"
 sheet = client.open_by_key(sheet_id).sheet1
 
 def Reciept(AC, name, amount,payed,due,time):
-    
-  
+
+
   amount_word=f"({num2words(amount).title()} Only)"
-            
-  pdf_document = fitz.open("receipt.pdf")
+
+  pdf_document = fitz.open("reciept.pdf")
   page = pdf_document[0]
 
   # Account Number
@@ -24,7 +24,7 @@ def Reciept(AC, name, amount,payed,due,time):
                    AC, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
-                 
+
   #Amount
   page.insert_text((215, 195),
                    amount, fontsize=10, 
@@ -32,13 +32,13 @@ def Reciept(AC, name, amount,payed,due,time):
                    color=(0, 0, 0))
 
   #Amount Payed
-  page.insert_text((215,212),        
+  page.insert_text((215,211),        
                    payed, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
   #Amount Due
-  page.insert_text((209,244.5), 
+  page.insert_text((215,244.5), 
                    due, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
@@ -48,7 +48,7 @@ def Reciept(AC, name, amount,payed,due,time):
                    amount_word, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
-                 
+
   #Saseed Sankhya last 3digit ramdom
   page.insert_text((254, 146), 
                    str(randint(100, 999)), fontsize=10, 
@@ -72,7 +72,7 @@ def Reciept(AC, name, amount,payed,due,time):
                    time, fontsize=10,
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
-                 
+
   #Sandarbh sankhya
   page.insert_text((430, 146), 
                    str(randint(10000, 99999)), fontsize=10,
@@ -82,7 +82,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
 
   # Save the updated PDF to a new file
-  pdf_document.save("receipt1.pdf")
+  pdf_document.save("reciept1.pdf")
   pdf_document.close()
 
 
@@ -93,5 +93,3 @@ def getData():
   data = sheet.get_all_records()
 
   return pd.DataFrame(data)
-                 
-
