@@ -25,19 +25,19 @@ def Reciept(AC, name, amount,payed,due,time):
                    color=(0, 0, 0))
 
   #Amount
-  page.insert_text((215, 195),
+  page.insert_text((214, 195),
                    amount, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
   #Amount Payed
-  page.insert_text((215,211),        
+  page.insert_text((214,211),        
                    payed, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
   #Amount Due
-  page.insert_text((215,244.5), 
+  page.insert_text((214,244.5), 
                    due, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
