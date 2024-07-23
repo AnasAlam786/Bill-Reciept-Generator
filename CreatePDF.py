@@ -13,7 +13,6 @@ sheet = client.open_by_key(sheet_id).sheet1
 
 def Reciept(AC, name, amount,payed,due,time):
 
-  amount_word=f"({num2words(amount).title()} Only)"
   payed_word=f"({num2words(payed).title()} Only)"
 
   pdf_document = fitz.open("reciept.pdf")
@@ -33,7 +32,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Amount Payed
   page.insert_text((215,211),        
-                   payed_word, fontsize=10, 
+                   payed, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
@@ -45,7 +44,7 @@ def Reciept(AC, name, amount,payed,due,time):
 
   #Amount in words
   page.insert_text((209, 228), 
-                   amount_word, fontsize=10, 
+                   payed_word, fontsize=10, 
                    fontname = "Times-Bold",
                    color=(0, 0, 0))
 
