@@ -48,7 +48,7 @@ try:
 
   todayDF=df[df['Time'].dt.date==today]
   yesterdayDF=df[df['Time'].dt.date==yesterday]
-  before=df[df['Time'].dt.date<before]
+  before=df[df['Time'].dt.date==before]
   
   "TODAY"
   st.dataframe(todayDF, use_container_width=True)
