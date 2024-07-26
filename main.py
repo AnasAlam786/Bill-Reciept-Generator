@@ -50,11 +50,9 @@ try:
   yesterdayDF=df[df['Time'].dt.date==yesterday]
   before=df[df['Time'].dt.date==before]
   
-  "TODAY"
+
   st.dataframe(todayDF, use_container_width=True)
-  "YESTERDAY"
   st.dataframe(yesterdayDF, use_container_width=True)
-  "BEFORE YESTERDAY"
   st.dataframe(before, use_container_width=True)
   
 except Exception as e:
