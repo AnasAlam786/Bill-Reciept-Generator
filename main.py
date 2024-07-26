@@ -40,7 +40,22 @@ try:
   df = getData()
   df = df.iloc[::-1].reset_index(drop=True)
   df['Account Number'] = df['Account Number'].astype(str)
-  st.dataframe(df, use_container_width=True)
+  df["Time"]=pd.to_datetime(df["Time"])
+  
+  today=datetime.now().date()
+  yesterday=today-timedelta(days=1)
+  before=today-timedelta(days=2)
+
+  todayDF=df[df['Time'].dt.date==today]
+  yesterdayDF=df[df['Time'].dt.date==yesterday]
+  before=df[df['Time'].dt.date<before]
+  
+  "TODAY"
+  st.dataframe(todayDF, use_container_width=True)
+  "YESTERDAY"
+  st.dataframe(yesterdayDF, use_container_width=True)
+  "BEFORE YESTERDAY"
+  st.dataframe(before, use_container_width=True)
   
 except Exception as e:
   st.error(f"Problem With Data File! Error = {e}",icon="🚨")
