@@ -89,6 +89,6 @@ def FillCSV(AC, name, amount,payed,due,time):
   sheet.append_row( [name,amount, payed, due, AC, time])
 
 def getData():
-  data = sheet.get_all_records()
-
+  
+  data = sheet.get_all_records(expected_headers=['Name', 'Amount', 'Payed Amount', 'Due Amount', 'Account Number', 'Time'])                      
   return pd.DataFrame(data)
