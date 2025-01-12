@@ -9,7 +9,7 @@ from pytz import timezone
 AC = str(st.text_input("Account Number"))
 name = st.text_input("Name")
 amount = st.text_input("Amount")
-time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
+time = datetime.now(timezone("Asia/Kolkata")).strftime('%d-%m-%Y %H:%M:%S')
 payed = st.text_input("Amount Recieved")
 
 if payed=="":
